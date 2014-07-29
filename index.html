@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html x-ng-app="SwagApp">
+<head>
+	<title></title>
+<link type="text/css" rel="stylesheet" href="style.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body x-ng-controller="SwagCtrl">
+	<header>
+		<h1>Swaggerest</h1>
+<!-- Search through existing pins -->
+		<input id="search" placeholder="Search for Swag!" type="text" ng-model="searchText" />
+<!-- Button to add a new pin -->
+		<button>
+			<form ng-submit="addNewPin();">
+					<input type="name" size="30" placeholder="Enter a new picture here" x-ng-model="newImage">
+					<input type="text" size="30" placeholder="Enter the description here" x-ng-model="desc">
+					<input type="submit" value="add">
+			</form>
+		</button>
+	</header>
+
+
+<!-- Main Div for Pins -->
+	<div class="columns"  draggable> 
+		<div class="main"    ng-repeat="pin in pins | filter: searchText">
+			<div class="pin">
+				<div class="image"><img src="{{pin.image}}"></div>
+				<hr>
+				<div class="description">{{pin.description}}</div>
+				<hr>
+				<div class="source">{{pin.source}}</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
