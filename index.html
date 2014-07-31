@@ -35,11 +35,7 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-left">
-	        <li >
-	        	<button class="btn btn-default" data-toggle="modal" data-target=".contact-me">
-	      	 		<a href="#">About Me</a>
-	      	 	</button>
-	      	</li>
+	        
 	      </ul>
 	   <!-- SEARCH BAR START-->
 	      <form class="navbar-form navbar-left" role="search">
@@ -51,21 +47,28 @@
 	    <!-- TITLE -->
 	      <a class="navbar-brand" style="color: rgba(235, 0, 25, .9)" href="index.html">Swaggerest</a>
 	      <ul class="nav navbar-nav navbar-right">
-	     <!-- MAKE NEW PIN BUTTON -->
-	      	 <li class="active">
-	      	 	<button class="btn btn-default" data-toggle="modal" data-target=".new-pin">
-	      	 		<a href="#">Make a new pin</a>
-	      	 	</button>
-	      	 </li>
 	     <!-- DROP DOWN -->
 	      	 <li class="dropdown" type="button" class="btn btn-default">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Click for Menu 
 	          	<span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
+		            <!-- MAKE NEW PIN BUTTON -->
+		      	<li class="active">
+		      	 	<button class="btn btn-default" data-toggle="modal" data-target=".new-pin">
+		      	 		<a href="#">Make a new pin</a>
+		      	 	</button>
+		      	</li>
+		      	 <!-- ABOUT ME -->
+	            <li >
+	        	<button class="btn btn-default" data-toggle="modal" data-target=".contact-me">
+	      	 		<a href="#">About Me</a>
+	      	 	</button>
+	      		</li>
+	      		<li class="divider"></li>
+	      		
+	      		<!-- INFO TO DELETE PIN -->
+	            <li data-toggle="modal" data-target=".delete-pin"><a href="#">To Delete Pins!</a></li>
+	            
 	            <li><a href="#">Separated link</a></li>
 	          </ul>
 	         </li>
@@ -95,11 +98,11 @@
 				
 				<!-- BUTTON FOR MODAL PIN -->
 				<!-- <div class="pin"> -->
-				<button class="btn btn-default"data-toggle="modal" data-target=".clicked-pin" ng-click="setModalImage(pin.image)">
+				<button class="btn btn-default"data-toggle="modal" data-target=".clicked-pin" ng-click="setModalImage(pin.image, pin.category)">
 				<div class="image"><img  ng-src="{{pin.image}}"></div>
 				<hr>
 				<div class="description">{{pin.description}}</div>
-
+				<!-- <div class="category">Category: {{pin.category}}</div> -->
 				<!-- <hr> -->
 				<!-- <div class="source">{{pin.source}}</div> -->
 			<!-- </div> -->
@@ -128,6 +131,7 @@
 			
 					<input type="name" size="50" class="form-control" placeholder="Enter a new picture here" x-ng-model="newImage">
 					<input type="text" size="50" class="form-control" placeholder="Enter the description here" x-ng-model="desc">
+					<input type="text" size="50" class="form-control" placeholder="Enter the category here" x-ng-model="category">
 					<input type="submit" class="btn btn-default" data-dismiss="modal" value="add" ng-click="addNewPin();">
 			
 		</button>
@@ -141,8 +145,8 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	     
-	      	<img class ="modal-Image" ng-src="{{modalImage}}">
-	     
+	      	<img class ="modal-Image" ng-src="{{modalImage}}" width="80%">
+	     	<span >Category: {{modalCategory}}</span>
 	    </div>
 	  </div>
 	</div>
@@ -153,12 +157,25 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	     
-	      	<p>Hello My name is Jonathon Park</p>
+	      	<p>Hello! My name is Jonathon Park. I'm currently learning programming through the School of Devs program. This is a board full of quotes that I find inspiration, of pictures that are awesome, and that of course, exude swag.</p>
 	     
 	    </div>
 	  </div>
 	</div>
 <!-- MODAL FOR ABOUT ME END -->
+
+<!-- MODAL FOR DELETE INFO START-->
+	<div class="modal fade delete-pin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	     
+	      	<p>To delete a pin, press the X on the pin. Don't worry if you misclick the X--you have to confirm anyway!</p>
+	     
+	    </div>
+	  </div>
+	</div>
+<!-- MODAL FOR DELETE INFO END -->
+
 
 </body>
 </html>

@@ -7,32 +7,35 @@ app.controller("SwagCtrl", ['$scope', '$firebase', function($scope, $firebase)
 	$scope.pins = sync.$asArray();
 	console.log($scope.pins.length);
 
-// MODAL PIN 
-	$scope.setModalImage = function (image) {
+// MODAL PIN IMAGE AND CATEGORY!!
+	$scope.setModalImage = function (image, category) {
 		$scope.modalImage = image;
+		$scope.modalCategory = category;
 	};
+
 
 	$scope.newImage = "";
 	$scope.desc = "";
-	// $scope.pins.$add
-	// ( $scope.addNewPin()
-	// );
 // 6072557234
+
+// ADDING NEW PIN
 	$scope.addNewPin = function() 
 	{
 //checking to see if forms are blank
-		if ($scope.newImage !="" && $scope.desc !="" )
+		if ($scope.newImage !="" && $scope.desc !="" && $scope.category !="")
 			// && $scope.source !=""
 		{
 // adding new pins
 			$scope.pins.$add({
 				image:$scope.newImage,
 				description:$scope.desc,
+				category:$scope.category,
 				// "source": $scope.source 	
 			});
 //reset the new pins
 			$scope.newImage = "";
 			$scope.desc = "";
+			$scope.category = "";
 			// $scope.source = ""
 		}
 // fill out form if blank
@@ -45,7 +48,7 @@ app.controller("SwagCtrl", ['$scope', '$firebase', function($scope, $firebase)
 // Removing PINS and confirming
 $scope.removePin = function(pin) {
 	if(confirm("Are you sure you want to delete this pin?")){
-var itemRef = new Firebase("https://swaggerest.firebaseio.com/" + pin.$id);
+var itemRef = new Firebase("https://wigglewiggle.firebaseio.com/" + pin.$id);
 itemRef.remove();
 	}
 }
