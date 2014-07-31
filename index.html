@@ -2,37 +2,126 @@
 <html x-ng-app="SwagApp">
 <head>
 	<title></title>
-<link type="text/css" rel="stylesheet" href="style.css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Firebase -->
+	<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="ngDraggable-master/ngDraggable.js"></script>
 </head>
 <body x-ng-controller="SwagCtrl">
-	<header>
-		<h1>Swaggerest</h1>
-<!-- Search through existing pins -->
+<!-- NAVBAR START -->
+	<nav class="navbar navbar-default" role="navigation">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-left">
+	        <li ><a href="#">Link</a></li>
+	      </ul>
+	   <!-- SEARCH BAR START-->
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	        	<input id="search" class="form-control navbar-left"  placeholder="Search for Swag!" type="text" ng-model="searchText" />
+	        </div>
+	      </form>
+	    <!-- SEARCH BAR END -->
+	      <a class="navbar-brand" style="color: rgba(235, 0, 25, .9)" href="index.html">Swaggerest</a>
+	      <ul class="nav navbar-nav navbar-right">
+	      	 <li class="active">
+	      	 	<button class="btn btn-default" data-toggle="modal" data-target=".new-pin">
+	      	 		<a href="#">Make a new pin</a>
+	      	 	</button>
+	      	 </li>
+	      	 <li class="dropdown" type="button" class="btn btn-default">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 
+	          	<span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">Separated link</a></li>
+	          </ul>
+	         </li>
+	      </ul>
+	    </div><!-- /.NAVBAR-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+<!-- NAVBAR END -->
+
+<!-- Search through existing pins
 		<input id="search" placeholder="Search for Swag!" type="text" ng-model="searchText" />
-<!-- Button to add a new pin -->
+ Button to add a new pin
 		<button>
 			<form ng-submit="addNewPin();">
 					<input type="name" size="30" placeholder="Enter a new picture here" x-ng-model="newImage">
 					<input type="text" size="30" placeholder="Enter the description here" x-ng-model="desc">
 					<input type="submit" value="add">
 			</form>
-		</button>
-	</header>
+		</button> -->
 
 
 <!-- Main Div for Pins -->
-	<div class="columns"  draggable> 
-		<div class="main"    ng-repeat="pin in pins | filter: searchText">
-			<div class="pin">
-				<div class="image"><img src="{{pin.image}}"></div>
-				<hr>
-				<div class="description">{{pin.description}}</div>
-				<hr>
-				<div class="source">{{pin.source}}</div>
-			</div>
+<div>
+	<div id="columns"> 
+		<div class="main" ng-repeat="pin in pins | filter: searchText">
+				<div class="pin">
+					<span class="glyphicon glyphicon-remove" ng-click="removePin(pin)"></span> 
+					<div class="image"><img ng-src="{{pin.image}}"></div>
+					<hr>
+					<div class="description">{{pin.description}}</div>
+					<!-- <hr> -->
+					<!-- <div class="source">{{pin.source}}</div> -->
+				</div>
 		</div>
 	</div>
+</div>
+
+<!-- DRAGGING START -->
+<!-- <div class="row text-center" bg-controller="DragCtrl">
+	<ul class="draglist">
+        <li ng-repeat="obj in draggableObjects" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+            <div ng-drag="true" ng-drag-data="obj" ng-class="obj.name">
+                {{obj.name}}
+            </div>
+        </li>
+    </ul>
+</div> -->
+<!-- DRAGGING END -->
+
+<!-- MODAL FOR ADDING NEW PIN -->
+	<div class="modal fade new-pin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <button class="buttonNewPin">
+			
+					<input type="name" size="50" class="form-control" placeholder="Enter a new picture here" x-ng-model="newImage">
+					<input type="text" size="50" class="form-control" placeholder="Enter the description here" x-ng-model="desc">
+					<input type="submit" class="btn btn-default" data-dismiss="modal" value="add" ng-click="addNewPin();">
+			
+		</button>
+	    </div>
+	  </div>
+	</div>
+
 </body>
 </html>

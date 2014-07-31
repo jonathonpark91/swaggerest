@@ -1,29 +1,56 @@
-h1 {
+/*NAVBAR START*/
+.navbar-brand {
 	font-family: Helvetica ;
 	text-align: center;
 	color: rgba(235, 0, 25, .9);
+	font-size: 30px;
 
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+
+.btn {
+	background-color: rgba(255, 255, 255, .75);
+	
+}
+.btn:hover {
+	background-color: rgba(0, 175, 255, .75); ;
+}
+.btn:active {
+	background-color: rgba(255, 255, 255, .75);
+}
+
+.buttonNewPin {
+	display: inline-block;
+	background-color:  white ;
+	/*border: 2px dashed red;*/
+	color: #2e2322;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 #search {
-	margin-left: 400px;
-	margin-bottom: 10px;
 }
 header {
 	border-bottom: 2px dashed red;
 	margin-bottom: 10px;
 
 }
+/*NAVBAR END*/
 
+/*START PIN*/
 img {
-	width: 90%;
+	/*width: 90%;*/
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 15px;
 	margin-bottom: 5px;
-
-
+	max-width: 100%;
+	min-width: 20%;
 }
-
 .image{
 
 
@@ -44,53 +71,8 @@ img {
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
+	
 }
-
-/*.description {
-	border-bottom: 2px dashed red;
-}
-*/
-
-
-.main {
-	display: inline-block;
-	background-color:  #e2e2e2 ;
-	border: 2px dashed red;
-	color: #2e2322;
-	overflow: hidden;
-	border-radius: 10px;
-
-	width: 100%;
-	max-width: 225px;
-	min-width: 200px;
-/*	margin-left: 10px;*/
-
-}
-
-.columns {
-	-webkit-column-count: 5;
-	-webkit-column-gap: 0px;
-	-webkit-column-fill: auto;
-	-moz-column-count: 5;
-	-moz-column-gap: 0px;
-	-moz-column-fill: auto;
-	column-count: 5;
-	column-gap: 0px;
-	column-fill: auto;
-}
-
-
-
-.main:hover {
-  border: 2px dotted blue;
-  opacity: 1;
-
-}
-
-.main:active{
-  border: 2px solid #336699;
-}
-
 .pin {
 	display: inline-block;
 	background: #FEFEFE;
@@ -103,7 +85,7 @@ img {
 	padding: 15px;
 	padding-bottom: 5px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
-	opacity: 1;
+	opacity: .9;
 	
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
@@ -123,24 +105,179 @@ img {
 }
 
 
+.main:hover {
+  border: 2px dashed red;
+  opacity: .9;
 
+}
+
+.main:active{
+  border: 2px solid #336699;
+}
 .main:not(:hover) {
 	opacity: 0.75;
 }
 
+
+.main {
+	display: inline-block;
+	background-color:  #e2e2e2 ;
+	border: 2px dashed red;
+	color: #2e2322;
+	overflow: hidden;
+	border-radius: 10px;
+	/*width: 100%;*/
+	/*	margin-left: 10px;*/
+
+}
+
+
+#columns {
+	-webkit-column-count: 1;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 1;
+	-moz-column-gap: 10px;
+	-moz-column-fill: auto;
+	column-count: 1;
+	column-gap: 15px;
+	column-fill: auto;
+}
+/*END PIN*/
+
+/*==== Start Responsiveness ====*/
+@media (min-width: 320px) {
+#columns {
+-webkit-column-count: 1;
+-moz-column-count: 1;
+column-count: 1;
+}
+}
+
+@media (min-width: 480px) {
+#columns {
+-webkit-column-count: 2;
+-moz-column-count: 2;
+column-count: 2;
+}
+}
+
+@media (min-width: 680px) {
+#columns {
+-webkit-column-count: 3;
+-moz-column-count: 3;
+column-count: 3;
+}
+}
+
 @media (min-width: 960px) {
-	#columns {
-		-webkit-column-count: 4;
-		-moz-column-count: 4;
-		column-count: 4;
-	}
+#columns {
+-webkit-column-count: 4;
+-moz-column-count: 4;
+column-count: 4;
+}
 }
 
-@media (min-width: 1100px) {
-	#columns {
-		-webkit-column-count: 5;
-		-moz-column-count: 5;
-		column-count: 5;
-	}
+@media (min-width: 1300px) {
+#columns {
+-webkit-column-count: 5;
+-moz-column-count: 5;
+column-count: 5;
+}
 }
 
+@media (min-width: 1700px) {
+#columns {
+-webkit-column-count: 6;
+-moz-column-count: 6;
+column-count: 6;
+}
+}
+/*==== End Responsiveness ====*/
+
+.glyphicon:hover {
+	opacity: 1;
+}
+
+/*DRAG STUFF*/
+/** {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+[ng-drag] {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+[ng-drag] {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+    display: block;
+    cursor: move;
+}
+
+[ng-drag].one {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+[ng-drag].two {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+[ng-drag].three {
+    background: rgba(0, 0, 255, 0.5);
+}
+
+[ng-drag].drag-over {
+    border: solid 1px red;
+}
+
+[ng-drag].dragging {
+    opacity: 0.5;
+}
+
+[ng-drop] {
+    background: rgba(0, 0, 0, 0.25);
+    text-align: center;
+    display: block;
+    position: relative;
+    padding: 20px;
+    width: 140px;
+    height: 140px;
+    float: left;
+}
+
+[ng-drop].drag-enter {
+    border: solid 5px red;
+}
+
+[ng-drop] span.title {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 20px;
+    margin-left: -100px;
+    margin-top: -10px;
+}
+
+[ng-drop] div {
+    position: relative;
+    z-index: 2;
+}
+
+.draglist {
+    display: inline-block;
+    margin: 0 auto;
+}
+*/
