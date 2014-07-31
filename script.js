@@ -7,6 +7,11 @@ app.controller("SwagCtrl", ['$scope', '$firebase', function($scope, $firebase)
 	$scope.pins = sync.$asArray();
 	console.log($scope.pins.length);
 
+// MODAL PIN 
+	$scope.setModalImage = function (image) {
+		$scope.modalImage = image;
+	};
+
 	$scope.newImage = "";
 	$scope.desc = "";
 	// $scope.pins.$add
@@ -45,8 +50,10 @@ itemRef.remove();
 	}
 }
 
-	
+	// var pinModal = function(image){
+	// 	$scope.modalImage = "http://d1warraxuf7xh1.cloudfront.net/wp-content/uploads/2014/02/USATSI_7713650_154224518_lowres.jpg"
 
+	// }
 
 }]);
 // //making div draggable

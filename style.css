@@ -147,6 +147,20 @@ img {
 }
 /*END PIN*/
 
+/*MODAL PIN START*/
+.modal-Image {
+	width:100%;
+
+}
+/*MODAL PIN END*/
+
+/*MODAL ABOUT ME START*/
+.about-me {
+	return "Hello My name is Jonathon Park"
+
+}
+/*MODAL ABOUT ME END*/
+
 /*==== Start Responsiveness ====*/
 @media (min-width: 320px) {
 #columns {

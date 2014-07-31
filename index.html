@@ -35,7 +35,11 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav navbar-left">
-	        <li ><a href="#">Link</a></li>
+	        <li >
+	        	<button class="btn btn-default" data-toggle="modal" data-target=".contact-me">
+	      	 		<a href="#">About Me</a>
+	      	 	</button>
+	      	</li>
 	      </ul>
 	   <!-- SEARCH BAR START-->
 	      <form class="navbar-form navbar-left" role="search">
@@ -89,16 +93,17 @@
 			<div class="main" ng-repeat="pin in pins | filter: searchText">
 				<span class="glyphicon glyphicon-remove" ng-click="removePin(pin)"></span> 
 				
+				<!-- BUTTON FOR MODAL PIN -->
 				<!-- <div class="pin"> -->
-					<!-- <button class="btn btn-default"data-toggle="modal" data-target=".clicked-pin"> -->
-					<div class="image"><img ng-click="alert('test');" ng-src="{{pin.image}}"></div>
-					<hr>
-					<div class="description">{{pin.description}}</div>
+				<button class="btn btn-default"data-toggle="modal" data-target=".clicked-pin" ng-click="setModalImage(pin.image)">
+				<div class="image"><img  ng-src="{{pin.image}}"></div>
+				<hr>
+				<div class="description">{{pin.description}}</div>
 
-					<!-- <hr> -->
-					<!-- <div class="source">{{pin.source}}</div> -->
-				<!-- </div> -->
-				<!-- </button> -->
+				<!-- <hr> -->
+				<!-- <div class="source">{{pin.source}}</div> -->
+			<!-- </div> -->
+				</button>
 			</div>
 		</div>
 	</div>
@@ -132,16 +137,28 @@
 <!-- MODAL FOR ADDING NEW PIN END-->
 
 <!-- MODAL FOR CLICKING PIN START-->
-	<div class="modal fade clicked-pin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal fade clicked-pin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	     
-	      	<!-- <img ng-src=""> -->
+	      	<img class ="modal-Image" ng-src="{{modalImage}}">
 	     
 	    </div>
 	  </div>
 	</div>
 <!-- MODAL FOR CLICKING PIN END -->
+
+<!-- MODAL FOR ABOUT ME START-->
+	<div class="modal fade contact-me" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	     
+	      	<p>Hello My name is Jonathon Park</p>
+	     
+	    </div>
+	  </div>
+	</div>
+<!-- MODAL FOR ABOUT ME END -->
 
 </body>
 </html>
