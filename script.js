@@ -2,7 +2,7 @@ var app = angular.module("SwagApp", ["firebase"]);
 
 app.controller("SwagCtrl", ['$scope', '$firebase', function($scope, $firebase)
 {
-	var swagFire = new Firebase ("https://swaggerest.firebaseio.com/");
+	var swagFire = new Firebase ("https://wigglewiggle.firebaseio.com/");
 	var sync = $firebase(swagFire);
 	$scope.pins = sync.$asArray();
 	console.log($scope.pins.length);
@@ -37,6 +37,7 @@ app.controller("SwagCtrl", ['$scope', '$firebase', function($scope, $firebase)
 		}
  	};
 
+// Removing PINS and confirming
 $scope.removePin = function(pin) {
 	if(confirm("Are you sure you want to delete this pin?")){
 var itemRef = new Firebase("https://swaggerest.firebaseio.com/" + pin.$id);
@@ -44,7 +45,7 @@ itemRef.remove();
 	}
 }
 
-
+	
 
 
 }]);

@@ -44,13 +44,16 @@
 	        </div>
 	      </form>
 	    <!-- SEARCH BAR END -->
+	    <!-- TITLE -->
 	      <a class="navbar-brand" style="color: rgba(235, 0, 25, .9)" href="index.html">Swaggerest</a>
 	      <ul class="nav navbar-nav navbar-right">
+	     <!-- MAKE NEW PIN BUTTON -->
 	      	 <li class="active">
 	      	 	<button class="btn btn-default" data-toggle="modal" data-target=".new-pin">
 	      	 		<a href="#">Make a new pin</a>
 	      	 	</button>
 	      	 </li>
+	     <!-- DROP DOWN -->
 	      	 <li class="dropdown" type="button" class="btn btn-default">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 
 	          	<span class="caret"></span></a>
@@ -81,20 +84,24 @@
 
 
 <!-- Main Div for Pins -->
-<div>
-	<div id="columns"> 
-		<div class="main" ng-repeat="pin in pins | filter: searchText">
-				<div class="pin">
-					<span class="glyphicon glyphicon-remove" ng-click="removePin(pin)"></span> 
-					<div class="image"><img ng-src="{{pin.image}}"></div>
+	<div>
+		<div id="columns"> 
+			<div class="main" ng-repeat="pin in pins | filter: searchText">
+				<span class="glyphicon glyphicon-remove" ng-click="removePin(pin)"></span> 
+				
+				<!-- <div class="pin"> -->
+					<!-- <button class="btn btn-default"data-toggle="modal" data-target=".clicked-pin"> -->
+					<div class="image"><img ng-click="alert('test');" ng-src="{{pin.image}}"></div>
 					<hr>
 					<div class="description">{{pin.description}}</div>
+
 					<!-- <hr> -->
 					<!-- <div class="source">{{pin.source}}</div> -->
-				</div>
+				<!-- </div> -->
+				<!-- </button> -->
+			</div>
 		</div>
 	</div>
-</div>
 
 <!-- DRAGGING START -->
 <!-- <div class="row text-center" bg-controller="DragCtrl">
@@ -108,7 +115,7 @@
 </div> -->
 <!-- DRAGGING END -->
 
-<!-- MODAL FOR ADDING NEW PIN -->
+<!-- MODAL FOR ADDING NEW PIN START-->
 	<div class="modal fade new-pin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-sm">
 	    <div class="modal-content">
@@ -122,6 +129,19 @@
 	    </div>
 	  </div>
 	</div>
+<!-- MODAL FOR ADDING NEW PIN END-->
+
+<!-- MODAL FOR CLICKING PIN START-->
+	<div class="modal fade clicked-pin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	     
+	      	<!-- <img ng-src=""> -->
+	     
+	    </div>
+	  </div>
+	</div>
+<!-- MODAL FOR CLICKING PIN END -->
 
 </body>
 </html>

@@ -121,13 +121,15 @@ img {
 
 .main {
 	display: inline-block;
-	background-color:  #e2e2e2 ;
+	background-color: white ;
 	border: 2px dashed red;
 	color: #2e2322;
 	overflow: hidden;
 	border-radius: 10px;
 	/*width: 100%;*/
 	/*	margin-left: 10px;*/
+	z-index: 0;
+	position: relative;
 
 }
 
@@ -194,7 +196,11 @@ column-count: 6;
 }
 }
 /*==== End Responsiveness ====*/
-
+.glyphicon {
+	background-color: white;
+	z-index: 1;
+	position: relative;
+}
 .glyphicon:hover {
 	opacity: 1;
 }
